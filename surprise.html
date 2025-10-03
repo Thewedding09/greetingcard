@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Surprise! 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    body {
+      margin: 0;
+      padding-top: 60px;
+      font-family: 'Great Vibes', cursive;
+      text-align: center;
+      background: linear-gradient(135deg, #cfe2ff 50%, #ffffff 100%);
+      overflow: hidden;
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Judul tetap stylish */
+    .gradient-text {
+      font-size: 42px;
+      background: linear-gradient(90deg, #ff33cc, #9933ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeSlideIn 2s ease forwards;
+      opacity: 0;
+      margin-bottom: 50px;
+    }
+
+    /* Elemen lucu tengah */
+    .element {
+      font-size: 100px;
+      margin: 30px;
+      display: inline-block;
+      animation: fadeSlideIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    /* 3 Kalimat Arial bold */
+    .sentence {
+      font-size: 24px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #6600cc; /* matching giftcard */
+      margin: 20px 0;
+      animation: fadeSlideIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    /* Delay animasi */
+    .fade-delay1 { animation-delay: 1s; }
+    .fade-delay2 { animation-delay: 2s; }
+    .fade-delay3 { animation-delay: 3s; }
+    .fade-delay4 { animation-delay: 4s; }
+    .fade-delay5 { animation-delay: 5s; }
+    .fade-delay6 { animation-delay: 6s; }
+
+    /* Love jatuh */
+    .falling-heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* Sprinkle */
+    .confetti {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background-color: red;
+      opacity: 0.8;
+      top: -10px;
+      animation: sprinkle linear forwards;
+    }
+
+    @keyframes sprinkle {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Judul stylish -->
+  <h1 class="gradient-text fade-delay1">Untuk rasya yang menawan sekali, semoga dijaganya oleh Tuhan</h1>
+
+  <!-- 2 Elemen lucu tengah -->
+  <div class="element fade-delay2">💌</div>
+  <div class="element fade-delay3">🐱</div>
+
+  <!-- 3 Kalimat Arial Bold -->
+  <p class="sentence fade-delay4">terimakasih telah hadir dicerita yang ada diriku,</p>
+  <p class="sentence fade-delay5">kamu lebih kekal dari kata selamanya di dalam doa dengan cara paling rahasia</p>
+  <p class="sentence fade-delay6">dan kamu cukup hidup dengan baik, selalu merawat senyum dan tumbuh menjadi manusia menyenangkan💙</p>
+
+  <script>
+    // Love jatuh
+    function createFallingHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("falling-heart");
+      heart.innerHTML = "💙";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createFallingHeart, 400);
+
+    // Sprinkle
+    function createConfetti() {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+      confetti.style.animationDuration = (3 + Math.random() * 2) + "s";
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000);
+    }
+    setInterval(createConfetti, 300);
+
+    // Emoji kanan-kiri jatuh
+    function createSideElement() {
+      const el = document.createElement("div");
+      el.style.position = "fixed";
+      el.style.top = "-30px";
+      el.style.fontSize = (15 + Math.random()*20) + "px";
+      const emojis = ["⭐","💛","🎈","💜","💖"];
+      el.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left = Math.random() > 0.5 ? Math.random()*50+"px" : window.innerWidth - (Math.random()*50+30) + "px";
+      el.style.opacity = 0.8;
+      el.style.zIndex = 0;
+      el.style.transition = "transform 4s linear, opacity 4s linear";
+      document.body.appendChild(el);
+      setTimeout(() => {
+        el.style.transform = "translateY(100vh)";
+        el.style.opacity = 0;
+      }, 100);
+      setTimeout(() => el.remove(), 4000);
+    }
+    setInterval(createSideElement, 500);
+
+  </script>
+
+</body>
+</html>
